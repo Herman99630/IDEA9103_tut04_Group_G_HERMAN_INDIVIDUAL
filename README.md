@@ -168,31 +168,31 @@ let magnetEnabled = true;  // controlled by keys 1 and 2
 
 ### 6.2 Mouse Magnet Behaviour in Wheel:
 
-#### 1 Computes the distance from the mouse to its base position:
-let d = dist(mouseX, mouseY, this.baseX, this.baseY);
+#### (1) Computes the distance from the mouse to its base position:
+- let d = dist(mouseX, mouseY, this.baseX, this.baseY);
 
 
-#### 2 Defines an influence radius:
-let influenceRadius = this.baseRadius * 4;
+#### (2) Defines an influence radius:
+- let influenceRadius = this.baseRadius * 4;
 
 
 #### 3 If the wheel is within this radius, a simple strength factor is computed:
-let strength = 1 - d / influenceRadius;  // from 0 (far) to 1 (very close)
+- let strength = 1 - d / influenceRadius;  // from 0 (far) to 1 (very close)
 
 
-#### 4 The wheel is moved a small step towards the cursor:
-this.x += (mouseX - this.x) * 0.08 * strength;
-this.y += (mouseY - this.y) * 0.08 * strength;
+#### (4) The wheel is moved a small step towards the cursor:
+- this.x += (mouseX - this.x) * 0.08 * strength;
+- this.y += (mouseY - this.y) * 0.08 * strength;
 
 
-#### 5 The rotation speed increases near the mouse:
-this.rotationSpeed = this.baseRotationSpeed * (1 + 2 * strength);
+#### (5) The rotation speed increases near the mouse:
+- this.rotationSpeed = this.baseRotationSpeed * (1 + 2 * strength);
 
 
-#### 6 If the wheel is outside the radius or the magnet is disabled (magnetEnabled == false), it eases back:
-this.x += (this.baseX - this.x) * 0.05;
-this.y += (this.baseY - this.y) * 0.05;
-this.rotationSpeed += (this.baseRotationSpeed - this.rotationSpeed) * 0.1;
+#### (6) If the wheel is outside the radius or the magnet is disabled (magnetEnabled == false), it eases back:
+- this.x += (this.baseX - this.x) * 0.05;
+- this.y += (this.baseY - this.y) * 0.05;
+- this.rotationSpeed += (this.baseRotationSpeed - this.rotationSpeed) * 0.1;
 
 ##### If this.isFrozen is true, the wheel ignores the magnet effect and only gently returns towards its base position.
 
