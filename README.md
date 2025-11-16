@@ -28,7 +28,7 @@ You can interact with the work in the following ways:
   - is highlighted with an extra outline.
 - Click the same wheel again to **unfreeze** it and allow it to move with the mouse again.
 
-### ⌨ Keyboard Controls
+### Keyboard Controls
 - Press **`1`** – Enable mouse magnet mode (default).  
   Wheels respond to the mouse and are attracted to the cursor.
 - Press **`2`** – Disable magnet mode.  
