@@ -1,4 +1,5 @@
 let composition;
+let magnetEnabled = true;  // Enables mouse-magnet interaction
 
 function setup() {
   createCanvas(800, 800);   // Canvas for the artwork
@@ -38,3 +39,32 @@ function drawBackgroundPattern() {
     ellipse(x, y, d, d);
   }
 }
+// Click to freeze/unfreeze the nearest wheel
+function mousePressed() {
+  if (!composition || !composition.wheels) return;
+
+  let nearest = null;
+  let nearestDist = Infinity;
+
+  for (let w of composition.wheels) {
+    let d = dist(mouseX, mouseY, w.x, w.y);
+    if (d < nearestDist) {
+      nearestDist = d;
+      nearest = w;
+    }
+  }
+
+  if (nearest && nearestDist < nearest.baseRadius * 2.0) {
+    nearest.isFrozen = !nearest.isFrozen;  // toggle state
+  }
+}
+
+// Keyboard control
+function keyPressed() {
+  if (key === '1') {
+    magnetEnabled = true;   // enable magnet mode
+  } else if (key === '2') {
+    magnetEnabled = false;  // disable magnet and restore original layout
+  }
+}
+
