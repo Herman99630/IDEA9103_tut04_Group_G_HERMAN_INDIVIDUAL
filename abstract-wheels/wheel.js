@@ -47,9 +47,8 @@ class Wheel {
   }
 
   update() {
-    // ----------------------
+  
     // Herman – Interaction
-    // ----------------------
     if (!magnetEnabled || this.isFrozen) {
       // smoothly return to original layout position
       this.x += (this.baseX - this.x) * 0.05;
